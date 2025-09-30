@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Aplikasi Konversi Tahun</title>
+</head>
+<body>
+  <h2>Konversi Tahun</h2>
+  <p>Masukkan jumlah tahun:</p>
+  <input type="number" id="inputTahun" placeholder="Masukkan tahun">
+  <br><br>
+
+  <p>Pilih konversi (boleh lebih dari satu):</p>
+  <input type="checkbox" id="bulan"> Tahun ke Bulan<br>
+  <input type="checkbox" id="hari"> Tahun ke Hari<br>
+  <input type="checkbox" id="jam"> Tahun ke Jam<br>
+  <input type="checkbox" id="menit"> Tahun ke Menit<br>
+  <input type="checkbox" id="detik"> Tahun ke Detik<br>
+  <input type="checkbox" id="semua"> Tampilkan Semua<br><br>
+
+  <button onclick="konversi()">Konversi</button>
+
+  <h3>Hasil:</h3>
+  <div id="hasil"></div>
+
+  <script>
+    function konversi() {
+      let tahun = Number(document.getElementById("inputTahun").value);
+      let hasil = "";
+
+      // Hitung semua konversi dulu
+      let bulan = tahun * 12;
+      let hari = tahun * 365;
+      let jam = hari * 24;
+      let menit = jam * 60;
+      let detik = menit * 60;
+
+      // Cek pilihan
+      if (document.getElementById("semua").checked) {
+        hasil =
+          tahun + " tahun = " + bulan + " bulan<br>" +
+          tahun + " tahun = " + hari + " hari<br>" +
+          tahun + " tahun = " + jam + " jam<br>" +
+          tahun + " tahun = " + menit + " menit<br>" +
+          tahun + " tahun = " + detik + " detik<br>";
+      } else {
+        if (document.getElementById("bulan").checked) {
+          hasil += tahun + " tahun = " + bulan + " bulan<br>";
+        }
+        if (document.getElementById("hari").checked) {
+          hasil += tahun + " tahun = " + hari + " hari<br>";
+        }
+        if (document.getElementById("jam").checked) {
+          hasil += tahun + " tahun = " + jam + " jam<br>";
+        }
+        if (document.getElementById("menit").checked) {
+          hasil += tahun + " tahun = " + menit + " menit<br>";
+        }
+        if (document.getElementById("detik").checked) {
+          hasil += tahun + " tahun = " + detik + " detik<br>";
+        }
+      }
+
+      // Tampilkan hasil
+      document.getElementById("hasil").innerHTML = hasil || "Tidak ada pilihan!";
+    }
+  </script>
+</body>
+</html>
